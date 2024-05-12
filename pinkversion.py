@@ -28,7 +28,7 @@ class Matris(object):
         self.base_d_s = 0.4
         self.mk,self.mk_s = {'left': 0, 'right': 0},0.05
         self.mk_t = (-self.mk_s)*2
-        self.lvl,self.sce,self.ls,self.combo = 1,0,0,1
+        self.lvl,self.sce,self.ls,self.combo,self.hmd123 = 1,0,0,1,'From Braxton.'
         self.hs,self.played_hbs,self.p = load_score(),False,False
         self.lus,self.gos,self.lcs,self.hbs = get_sound("lvlup.wav"),get_sound("gameover.wav"),get_sound("lcleared.wav"),get_sound("highscorebeaten.wav")
     def set_tmes(self):
@@ -158,13 +158,13 @@ class Matris(object):
             r = self.tm_r
         return rotate(self.current_tm.shape, r)
     def block(self, color, shadow=False):
-        colors = {'blue':   (105, 105, 255),
-                  'yellow': (225, 242, 41),
+        colors = {'blue':   (242, 41, 195),
+                  'yellow': (242, 41, 195),
                   'pink':   (242, 41, 195),
-                  'green':  (22, 181, 64),
-                  'red':    (204, 22, 22),
-                  'orange': (245, 144, 12),
-                  'cyan':   (10, 255, 226)}
+                  'green':  (242, 41, 195),
+                  'red':    (242, 41, 195),
+                  'orange': (242, 41, 195),
+                  'cyan':   (242, 41, 195)}
         if shadow:
             end = [90]
         else:
@@ -277,18 +277,18 @@ class Game(object):
         scesurf = renderpair("Score", self.matris.sce)
         lvlsurf = renderpair("LVL", self.matris.lvl)
         lssurf = renderpair("Lines", self.matris.ls)
-        combosurf = renderpair("Combo", "x{}".format(self.matris.combo))
+        hmd1 = renderpair("Happy Mothers Day!", self.matris.hmd123)
         height = 20 + (lvlsurf.get_rect().height + 
                        scesurf.get_rect().height +
                        lssurf.get_rect().height + 
-                       combosurf.get_rect().height )
+                       hmd1.get_rect().height )
         a = Surface((width, height)) 
         a.fill(BRC)
         a.fill(BC, Rect(BW, BW, width-BW*2, height-BW*2))
         a.blit(lvlsurf, (0,0))
         a.blit(scesurf, (0, lvlsurf.get_rect().height))
         a.blit(lssurf, (0, lvlsurf.get_rect().height + scesurf.get_rect().height))
-        a.blit(combosurf, (0, lvlsurf.get_rect().height + scesurf.get_rect().height + lssurf.get_rect().height))
+        a.blit(hmd1, (0, lvlsurf.get_rect().height + scesurf.get_rect().height + lssurf.get_rect().height))
         screen.blit(a, a.get_rect(bottom=HEIGHT-MATRIS_OFFSET, centerx=TRICKY_CENTERX))
     def blit_next_tm(self, tm_surf):
         a = Surface((BS*5, BS*5))
