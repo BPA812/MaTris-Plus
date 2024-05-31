@@ -28,7 +28,7 @@ class Matris(object):
         self.base_d_s = 0.4
         self.mk,self.mk_s = {'left': 0, 'right': 0},0.05
         self.mk_t = (-self.mk_s)*2
-        self.lvl,self.sce,self.ls,self.combo,self.hmd123 = 1,0,0,1,'From Braxton.'
+        self.lvl,self.sce,self.ls,self.combo,self.hmd123 = 1,0,0,1,'Love Braxton.'
         self.hs,self.played_hbs,self.p = load_score(),False,False
         self.lus,self.gos,self.lcs,self.hbs = get_sound("lvlup.wav"),get_sound("gameover.wav"),get_sound("lcleared.wav"),get_sound("highscorebeaten.wav")
     def set_tmes(self):
@@ -277,7 +277,7 @@ class Game(object):
         scesurf = renderpair("Score", self.matris.sce)
         lvlsurf = renderpair("LVL", self.matris.lvl)
         lssurf = renderpair("Lines", self.matris.ls)
-        hmd1 = renderpair("Happy Mothers Day!", self.matris.hmd123)
+        hmd1 = renderpair("Happy MD 2024!", self.matris.hmd123)
         height = 20 + (lvlsurf.get_rect().height + 
                        scesurf.get_rect().height +
                        lssurf.get_rect().height + 
